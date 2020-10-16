@@ -30,7 +30,7 @@ public function __construct()
         if ($this->form_validation->run() == false) {
 		$this->load->view('templates/admin_header',$data);
 		$this->load->view('admin/penyakit/data_penyakit');
-		$this->load->view('templates/footer');
+		$this->load->view('templates/admin_footer');
 	}else{
          
          $data = [
@@ -51,7 +51,7 @@ public function __construct()
 		$data['penyakit'] = $this->m_penyakit->edit_data($where,'penyakit')->result();
 		$this->load->view('templates/admin_header',$data);
 		$this->load->view('admin/penyakit/ubah_penyakit',$data);
-		$this->load->view('templates/footer');
+		$this->load->view('templates/admin_footer');
 	}
 
 	public function update()

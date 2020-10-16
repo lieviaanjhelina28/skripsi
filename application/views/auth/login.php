@@ -24,7 +24,7 @@
                   <form class="user" method="post" action="<?php echo base_url('auth');?>">
 
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Nama" value="<?php echo set_value('username'); ?>">
+                      <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Username" value="<?php echo set_value('username'); ?>">
                       <?php echo form_error('username','<small class="text-danger pl-3">','</small>'); ?>
                     </div>
 

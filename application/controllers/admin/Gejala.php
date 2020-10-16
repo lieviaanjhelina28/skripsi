@@ -33,7 +33,7 @@ public function __construct()
         if ($this->form_validation->run() == false) {
 		$this->load->view('templates/admin_header',$data);
 		$this->load->view('admin/gejala/data_gejala');
-		$this->load->view('templates/footer');
+		$this->load->view('templates/admin_footer');
 	}else {
          
          $data = [
@@ -54,7 +54,7 @@ public function __construct()
         $data['gejala'] = $this->m_gejala->edit_data($where,'gejala')->result();
         $this->load->view('templates/admin_header',$data);
         $this->load->view('admin/gejala/ubah_gejala',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/admin_footer');
     }
 
     public function update()

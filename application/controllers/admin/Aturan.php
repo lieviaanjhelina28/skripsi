@@ -40,7 +40,7 @@ class Aturan extends CI_Controller
         if($this->form_validation->run() == false) {  
         $this->load->view('templates/admin_header', $data);
         $this->load->view('admin/aturan/data_aturan');
-        $this->load->view('templates/footer');
+        $this->load->view('templates/admin_footer');
         } else{     
          
          $data = [
@@ -66,7 +66,7 @@ class Aturan extends CI_Controller
         $data['aturan'] = $this->m_aturan->edit_data($where,'aturan')->result();
         $this->load->view('templates/admin_header',$data);
         $this->load->view('admin/aturan/ubah_aturan',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/admin_footer');
     }
 
     public function update()

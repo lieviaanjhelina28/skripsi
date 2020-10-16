@@ -12,8 +12,14 @@ class Auth extends CI_Controller
     public function index()
     {
 
-        $this->form_validation->set_rules('username', 'username', 'trim|required');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        $this->form_validation->set_rules('username', 'username', 'trim|required',
+        [
+                'required' => 'Username harus diisi!',
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'trim|required',
+        [
+                'required' => 'Password harus diisi!',
+        ]);
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Halaman Login';
@@ -36,8 +42,6 @@ class Auth extends CI_Controller
 
         // jika usernya ada
         if ($user) {
-            // jika usernya aktif
-            if ($user['aktif'] == 1) {
                 // cek password
                 if (password_verify($password, $user['password'])) {
                     $data = [
@@ -59,7 +63,7 @@ class Auth extends CI_Controller
                 redirect('auth');
             }
        
-    }
+    
   }
 
 
@@ -70,14 +74,14 @@ class Auth extends CI_Controller
         // }
 
         $this->form_validation->set_rules('username','Username','required|trim', [
-                'required' => 'Nama Lengkap harus diisi!',
+                'required' => 'Username harus diisi!',
         ]);
 
         $this->form_validation->set_rules('password1','Password','required|trim|min_length[3]|matches[password2]',[
 
-                'required'   => 'Kata sandi harus diisi!',
-                'matches'    => 'Kata sandi tidak cocok!',
-                'min_length' => 'Kata sandi terlalu pendek!'
+                'required'   => 'Password harus diisi!',
+                'matches'    => 'Password tidak cocok!',
+                'min_length' => 'Password terlalu pendek!'
         ]);
 
         $this->form_validation->set_rules('password2','Password','required|trim|matches[password1]');
@@ -95,7 +99,6 @@ class Auth extends CI_Controller
             'username' => htmlspecialchars($this->input->post('username',true)),
             'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
             'role_id' => 1,
-            'aktif' => 1,
             ];
 
             $this->db->insert('user', $data);

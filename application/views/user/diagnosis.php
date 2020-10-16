@@ -1,5 +1,10 @@
+ <br>
+ <br><br>
+ <br>
   <!-- Begin Page Content -->
-        <div class="container-fluid">
+<!--         <div class="container-fluid"> -->
+   <section>
+      <div class="container">
         <!-- Illustrations -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -14,8 +19,8 @@
                 <table class="table table-bordered"  width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                    <th>No</th>
                 <th><input type="checkbox" aria-label="Checkbox for following text input" id="checkAll" /></th>
-               <!--  <th>No</th> -->
                 <th>Nama Gejala</th>
             </tr>
         </thead>
@@ -27,8 +32,8 @@
                         foreach ($konsul as $k) { ?>
         <tr>    
                       
+                      <td><?php echo $no++ ?></td>
                       <td><input type="checkbox" name="selectall[]" value="<?php echo $k->kode_gejala ?>"></td>
-                     <!--  <td><?php echo $no++ ?></td> -->
                       <td><?php echo $k->nama_gejala ?></td>
                           
                         </tr>
@@ -39,12 +44,13 @@
     <div class="panel-footer">
         <button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-ok"></span>Diagnosa</button>
 
-                </div>
-              </div>
-            </form>
           </div>
         </div>
-      </div>
+      </form>
     </div>
+  </div>
+</div>
+</section>
+
 
             

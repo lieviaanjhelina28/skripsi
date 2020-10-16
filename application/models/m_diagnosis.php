@@ -31,15 +31,16 @@ class M_diagnosis extends CI_model{
 
     public function get2($dgejala)
     {
-         $this->db->select('*');
+         $this->db->select('aturan.*,gejala.*');
         $this->db->from('aturan');
-         $this->db->where('kode_gejala',$dgejala);
+    	$this->db->join('gejala','gejala.kode_gejala=aturan.kode_gejala');
+         $this->db->where('aturan.kode_gejala',$dgejala);
         $query = $this->db->get();
         return $query;
 
 
     }
-    public function simpan_data($table, $data)
+    public function simpan($table, $data)
     {
         $this->db->insert($table, $data);
     }

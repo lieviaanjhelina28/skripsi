@@ -2,105 +2,99 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title><?php echo $title; ?></title>
+  <title><?php echo $title;?></title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-  <!-- Custom fonts for this template-->
-  <link href="<?php echo base_url();?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="<?php echo base_url();?>assets/user/assets/img/d.png" rel="icon">
+  <link href="<?php echo base_url();?>assets/user/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Custom styles for this template-->
-  <link href="<?php echo base_url();?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Custom styles for this page -->
-  <link href="<?php echo base_url(); ?>assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="<?php echo base_url();?>assets/user/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>assets/user/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>assets/user/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>assets/user/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>assets/user/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>assets/user/assets/vendor/aos/aos.css" rel="stylesheet">
 
+  <!-- Template Main CSS File -->
+  <link href="<?php echo base_url();?>assets/user/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: BizLand - v2.0.1
+  * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
-<body id="page-top">
+<body>
 
-  <!-- Page Wrapper -->
-  <div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas  fa-code"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Sispak</div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link pb-0" href="<?php echo base_url('home');?>">
-          <i class="fas fa-fw fa-info"></i>
-          <span>Informasi</span></a>
-      </li>
-      <br>
-
-        <hr class="sidebar-divider my-0">
-
-        <li class="nav-item active">
-        <a class="nav-link pb-0" href="<?php echo base_url('user/diagnosis');?>">
-          <i class="fas fa-fw fa-check"></i>
-          <span>Diagnosis</span></a>
-      </li>
-<br>
-     
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-         <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url('auth');?>">
-          <i class="fas fa-fw fa-sign-in-alt"></i>
-          <span>Login Admin</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-     <!--  <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <!-- <div class="contact-info mr-auto">
+        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com"></a>
+        <i class="icofont-phone"></i> 
       </div> -->
+      <!-- <div class="social-links">
+        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="#" class="skype"><i class="icofont-skype"></i></a>
+        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+      </div> -->
+    </div>
+  </div>
 
-    </ul>
-    <!-- End of Sidebar -->
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+      <h1 class="logo mr-auto"><a href="<?php echo base_url('home');?>">Sistem Pakar</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="<?php echo base_url();?>assets/user/assets/img/logo.png" alt=""></a>-->
 
-      <!-- Main Content -->
-      <div id="content">
-        <br>
-
-        <!-- Topbar -->
-       <!--  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="<?php echo base_url('home');?>">Home</a></li>
+          <li><a href="<?php echo base_url('user/diagnosis');?>">Diagnosis</a></li>
+          <li><a href="<?php echo base_url('auth');?>">Login Admin</a></li>
+          <!-- <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#team">Team</a></li>
+          <li class="drop-down"><a href="">Drop Down</a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="drop-down"><a href="#">Deep Drop Down</a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact</a></li>
  -->
-          <!-- Sidebar Toggle (Topbar) -->
-        
-               <!--    <h6 class="m-0 font-weight-bold text-primary text-center">Sistem Pakar Untuk Mendiagnosis Penyakit Tanaman Pisang Dengan Teorema Bayes</h6>
-             --><div class="text-center">
-               <h4 class="font-weight-bold text-primary">Sistem Pakar Untuk Mendiagnosis Penyakit Tanaman Pisang Dengan Teorema Bayes</h4>
-      </div>
-<hr>
-      <!--   </nav> -->
-        <!-- End of Topbar -->
+        </ul>
+      </nav><!-- .nav-menu -->
 
+    </div>
+  </header><!-- End Header -->
 
+ 
 
-      
+  <main id="main">
 
