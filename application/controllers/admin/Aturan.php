@@ -61,6 +61,7 @@ class Aturan extends CI_Controller
 
  public function ubah($id_aturan)
     {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['title'] = 'Halaman Ubah Data Penyakit';
         $where = array('id_aturan' => $id_aturan);
         $data['aturan'] = $this->m_aturan->edit_data($where,'aturan')->result();

@@ -46,6 +46,7 @@ public function __construct()
 
 	public function ubah($kode_penyakit)
 	{
+		   $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 		$data['title'] = 'Halaman Ubah Data Penyakit';
 		$where = array('kode_penyakit' => $kode_penyakit);
 		$data['penyakit'] = $this->m_penyakit->edit_data($where,'penyakit')->result();

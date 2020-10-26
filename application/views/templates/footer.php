@@ -7,13 +7,13 @@
       <div class="copyright">
         &copy; Copyright <strong><span>BizLand</span></strong>. All Rights Reserved  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
-      <div class="credits">
+     <!--  <div class="credits"> -->
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-        Jumlah riwayat diagnosis saat ini <span data-toggle="counter-up">1,463</span>
-      </div>
+      <!--   Jumlah riwayat diagnosis saat ini <span data-toggle="counter-up">1,463</span>
+      </div> -->
     </div>
   </footer><!-- End Footer -->
 

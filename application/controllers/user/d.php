@@ -36,7 +36,7 @@ class Diagnosis extends CI_Controller
       $gejala[$value] = $this->m_diagnosis->get2($value)->result_array();
     }
 
-    // ini untuk pengelompokan kegala ke penyakit
+    // ini untuk pengelompokan gejala ke penyakit
     foreach ($gejala as $key => $value) {
       foreach ($penyakit as $p) {
         // $sakit[$p['kode_penyakit']] = array();
@@ -55,12 +55,6 @@ class Diagnosis extends CI_Controller
     // print_r($sakit);
     // print_r($gejala);
     // print_r($penyakit);
-
-    $jumlah  = $this->input->post('jumlahbobot');
-    $hasil1  = $this->input->post('phi');
-    $jumlah2 = $this->input->post('evidence');
-    $hasil2  = $this->input->post('phie');
-    $hasilJumlah = $this->input->post('hasil');
 
     // ini perhitungan
     foreach ($penyakit as $pen) {
@@ -97,81 +91,43 @@ class Diagnosis extends CI_Controller
           'kode_penyakit' => $pen['kode_penyakit'],
           'presentase'    => $jumlah3 * 100
         );
-        $hasilJumlah[] = $jumlah3 * 100;
+      }
+        $hasilhitung[$pen['kode_penyakit']] = $jumlah3;
+    }
+
+    echo max($hasilhitung);
+
+    // Ambil nilai terbesar 
+    $besar = 0;
+    $kecil = 0;
+    foreach ($hasil_akhir as $key) {
+      // $besar = $key['presentase'];
+      if ($besar < $key['presentase']) {
+        $besar = $key['presentase'];
+        $tampil_hasil = array (
+          'nama_penyakit' => $key['nama_penyakit'],
+          'kode_penyakit' => $key['kode_penyakit'],
+          'presentase'    => $key['presentase']
+        );
+      }else{
+        $kecil > $key['presentase'];
+         $kecil = $key['presentase'];
       }
     }
-    // jumlah evidence print_r($jumlah);
-
-     // perhitungan 2 p(hi) print_r($hasil1);
-
-     // hasil 3 print_r($jumlah2);
-
-    // perhitungan 4 p(hi|e) print_r($hasil2);
-
-   
-    // hasil akhir print_r($jumlah3);
-    // print_r($jumlah);
-    // print_r($hasil1);
-    // print_r($jumlah2);
-    // print_r($hasil2);
-    // print_r($hasilJumlah);
+    echo $besar."<br>";
+    echo $kecil."<br>";
     print_r($hasil_akhir);
-
-    $maxJumlah = max($hasilJumlah);
-    $newHasilAkhir = array_filter($hasil_akhir, function($hasil) use ($maxJumlah) {
-      if ($hasil['presentase'] == $maxJumlah) {
-        return true;
-      }
-      return false;
-    });
-
-    if (count($newHasilAkhir) == 1) {
-      foreach ($newHasilAkhir as $has) {
-        $tampil_hasil = array (
-          'nama_penyakit' => $has['nama_penyakit'],
-          'kode_penyakit' => $has['kode_penyakit'],
-          'presentase'    => $has['presentase']
-        );
-      }
-    }else if(count($newHasilAkhir) > 1){
-      foreach ($newHasilAkhir as $value) {
-        $jmlhGejala[$value['kode_penyakit']] = count($sakit[$value['kode_penyakit']]);
-      }
-      $maxGejala = max($jmlhGejala);
-      $newGejalaMax = array_filter($jmlhGejala, function($angka) use($maxGejala) {
-        if ($angka == $maxGejala) {
-          return true;
-        }
-        return false;
-      });
-      $kdPenyakit = array_keys($newGejalaMax);
-      $hasilAkhir = array_filter($hasil_akhir, function($hasil) use ($kdPenyakit) {
-        if ($hasil['kode_penyakit'] == $kdPenyakit[0]) {
-          return true;
-        }
-        return false;
-      });
-      foreach ($hasilAkhir as $has) {
-        $tampil_hasil = array (
-          'nama_penyakit' => $has['nama_penyakit'],
-          'kode_penyakit' => $has['kode_penyakit'],
-          'presentase'    => $has['presentase']
-        );
-      }
-    }
-
-    // print_r($hasilAkhir);
-    // print_r($newHasilAkhir);
-    // print_r($sakit);
     echo "</pre>";
 
     $no = 1;
-    echo "Penyakit Terdeteksi <strong>".$tampil_hasil['nama_penyakit']."</strong> dengan kepercayaan ".number_format($tampil_hasil['presentase'],6)."%<br><br>";
+    echo "Penyakit Terdeteksi <strong>".$tampil_hasil['nama_penyakit']."</strong> dengan nilai ".number_format($tampil_hasil['presentase'],6)."%<br><br>";
     echo "Gejala yang dipilih :<br>";
-    foreach ($sakit as $id => $value) {
+    foreach ($sakit as $id => $v ) {
       foreach ($sakit[$id] as $gej) {
         echo $no++.". ".$gej['nama_gejala']."<br>";
       }
+      
     }
+
   }
 }
