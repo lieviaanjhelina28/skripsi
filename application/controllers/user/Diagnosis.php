@@ -45,7 +45,7 @@ class Diagnosis extends CI_Controller
             $sakit[$p['kode_penyakit']][] = array(
               'kode_gejala' => $g['kode_gejala'],
               'nama_gejala' => $g['nama_gejala'],
-              'probabilitas' => $g['probabilitas']
+              'bobot' => $g['bobot']
             );
           }
         }
@@ -56,11 +56,11 @@ class Diagnosis extends CI_Controller
     // print_r($gejala);
     // print_r($penyakit);
 
-    $jumlah  = $this->input->post('jumlahbobot');
-    $hasil1  = $this->input->post('phi');
-    $jumlah2 = $this->input->post('evidence');
-    $hasil2  = $this->input->post('phie');
-    $hasilJumlah = $this->input->post('hasil');
+    // $jumlah  = $this->input->post('jumlahbobot');
+    // $hasil1  = $this->input->post('phi');
+    // $jumlah2 = $this->input->post('evidence');
+    // $hasil2  = $this->input->post('phie');
+    // $hasilJumlah = $this->input->post('hasil');
 
     // ini perhitungan
     foreach ($penyakit as $pen) {
@@ -73,9 +73,9 @@ class Diagnosis extends CI_Controller
       if (isset($sakit[$pen['kode_penyakit']])) {
         // echo $pen['kode_penyakit'];
         foreach ($sakit[$pen['kode_penyakit']] as $itung) {
-          // echo $itung['probabilitas'];
-          $jumlah = $jumlah + $itung['probabilitas'];
-          $itu[] = $itung['probabilitas'];
+          // echo $itung['bobot'];
+          $jumlah = $jumlah + $itung['bobot'];
+          $itu[] = $itung['bobot'];
         }
         // print_r($itu);
         foreach ($itu as $i => $value) {
@@ -166,7 +166,7 @@ class Diagnosis extends CI_Controller
     echo "</pre>";
 
     $no = 1;
-    echo "Penyakit Terdeteksi <strong>".$tampil_hasil['nama_penyakit']."</strong> dengan kepercayaan ".number_format($tampil_hasil['presentase'],6)."%<br><br>";
+    echo "Penyakit Terdeteksi <strong>".$tampil_hasil['nama_penyakit']."</strong> dengan nilai ".number_format($tampil_hasil['presentase'],6)."%<br><br>";
     echo "Gejala yang dipilih :<br>";
     foreach ($sakit as $id => $value) {
       foreach ($sakit[$id] as $gej) {

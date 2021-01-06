@@ -31,9 +31,9 @@ class Aturan extends CI_Controller
                 'required' => 'Kode Gejala Harus Diisi!'
         ]);
 
-        $this->form_validation->set_rules('probabilitas','Probabilitas','required|trim', [
+        $this->form_validation->set_rules('bobot','bobot','required|trim', [
 
-                'required' => 'Probabilitas Harus Diisi!'
+                'required' => 'bobot Harus Diisi!'
         ]);
 
 
@@ -46,7 +46,7 @@ class Aturan extends CI_Controller
          $data = [
             'kode_penyakit' => $this->input->post('kode_penyakit'),
             'kode_gejala'   => $this->input->post('kode_gejala'),
-            'probabilitas'  => $this->input->post('probabilitas')
+            'bobot'  => $this->input->post('bobot')
             
 
                 
@@ -75,13 +75,13 @@ class Aturan extends CI_Controller
         $id_aturan = $this->input->post('id_aturan');
         $kode_penyakit = $this->input->post('kode_penyakit');
         $kode_gejala = $this->input->post('kode_gejala');
-        $probabilitas = $this->input->post('probabilitas');
+        $bobot = $this->input->post('bobot');
 
         $data = [
             // 'id_aturan' => $id_aturan,
             'kode_penyakit' => $kode_penyakit,
             'kode_gejala' => $kode_gejala,
-            'probabilitas' => $probabilitas
+            'bobot' => $bobot
         ];
 
         $where = array(

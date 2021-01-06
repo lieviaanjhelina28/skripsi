@@ -23,7 +23,7 @@
                       <th>No</th>
                       <th>Kode Penyakit</th>
                       <th>Kode Gejala</th>
-                      <th>Probabilitas</th>
+                      <th>Bobot</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -44,7 +44,7 @@
                       <td><?php echo $no++ ?></td>
                        <td><?php echo $a->kode_penyakit ?></td>
                       <td><?php echo $a->kode_gejala ?></td>
-                       <td><?php echo $a->probabilitas?></td>
+                       <td><?php echo $a->bobot?></td>
                       <td>
                        <!--  <?php echo anchor('admin/aturan/detail/' . $a->id_aturan, '<div class="btn btn-success btn-sm"><i class="fas fa-edit"></i></div>');  ?> 
  -->
@@ -98,8 +98,8 @@
                      <?php echo form_error('kode_gejala', ' <small class="text-danger pl-3">', '</small> '); ?>
                 </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" id="probabilitas" name="probabilitas" placeholder="Probabilitas">
-                    <?php echo form_error('probabilitas', ' <small class="text-danger pl-3">', '</small> '); ?>
+                    <input type="text" class="form-control" id="bobot" name="bobot" placeholder="bobot">
+                    <?php echo form_error('bobot', ' <small class="text-danger pl-3">', '</small> '); ?>
                 </div>
               </div>
                 <div class="modal-footer">

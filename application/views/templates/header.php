@@ -66,7 +66,7 @@
         <ul>
           <li class="active"><a href="<?php echo base_url('home');?>">Home</a></li>
           <li><a href="<?php echo base_url('user/diagnosis');?>">Diagnosis</a></li>
-          <li><a href="<?php echo base_url('auth');?>">Login Admin</a></li>
+         <!--  <li><a href="<?php echo base_url('auth');?>">Login Admin</a></li> -->
           <!-- <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#team">Team</a></li>
           <li class="drop-down"><a href="">Drop Down</a>

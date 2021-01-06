@@ -25,6 +25,7 @@
                      <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Ubah</button>
                     <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+
                 </div>
 
                   <?php  } ?>

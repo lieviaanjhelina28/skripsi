@@ -22,7 +22,7 @@
                     <tr>
                       <th>No</th>
                       <th>Kode Gejala</th>
-                      <th scope="2">Nama Gejala</th>
+                      <th>Nama Gejala</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>

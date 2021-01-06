@@ -43,9 +43,9 @@
                     <a class="small" href="<?php echo base_url('auth/register'); ?>">Buat Akun!</a>
                   </div> -->
 
-                   <div class="text-center">
+                <!--    <div class="text-center">
                     <a class="small" href="<?php echo base_url('home'); ?>">Kembali Ke Halaman User</a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>

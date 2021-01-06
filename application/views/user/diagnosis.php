@@ -20,7 +20,8 @@
                   <thead>
                     <tr>
                     <th>No</th>
-                <th><input type="checkbox" aria-label="Checkbox for following text input" id="checkAll" /></th>
+                <th>Pilih</th>
+                <!-- <input type="checkbox" aria-label="Checkbox for following text input" id="checkAll" /> -->
                 <th>Nama Gejala</th>
             </tr>
         </thead>
@@ -33,7 +34,7 @@
         <tr>    
                       
                       <td><?php echo $no++ ?></td>
-                      <td><input type="checkbox" name="selectall[]" value="<?php echo $k->kode_gejala ?>"></td>
+                      <td ><input type="checkbox"  name="selectall[]" value="<?php echo $k->kode_gejala ?>"></td>
                       <td><?php echo $k->nama_gejala ?></td>
                           
                         </tr>

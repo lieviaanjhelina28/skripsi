@@ -74,7 +74,7 @@ public function __construct()
         );
 
         $this->m_gejala->update($where,$data, 'gejala');
-        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible text-center" role="alert">Data gejala Berhasil Diubah</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible text-center" role="alert">Data Gejala Berhasil Diubah</div>');
             redirect('admin/gejala');
         redirect('admin/gejala');
 

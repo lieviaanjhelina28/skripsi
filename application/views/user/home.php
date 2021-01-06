@@ -1,12 +1,15 @@
     <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="70">
-      <h1>Selamat Datang Di <span>Website</spa>
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+<div class="text-center">
+      <h1>Selamat Datang Di Website
       </h1>
+
       <h2>Sistem Pakar Untuk Mendiagnosis Penyakit Tanaman Pisang Dengan <i>Teorema Bayes</i></h2>
-      <div class="d-flex">
+     <!--  <div class="d-flex">
         <a href="<?php echo base_url('user/diagnosis') ?>" class="btn-get-started scrollto">Diagnosis</a>
-        <!-- <a href="<?php echo base_url('user/diagnosis') ?>" class="btn-get-started scrollto"><i class="icofont-play-alt-2"></i>Panduan </a> -->
+        <a href="<?php echo base_url('user/diagnosis') ?>" class="btn-get-started scrollto"><i class="icofont-play-alt-2"></i>Panduan </a>
+      </div> -->
       </div>
     </div>
   </section><!-- End Hero -->
@@ -20,13 +23,18 @@
           <div class="col-lg-6 col-md-4 d-flex align-items-stretch ">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><i class="icofont-users-alt-5"></i></div>
-              <h4 class="title"><a href="">Informasi</a></h4>
-              <p class="description">Sistem Pakar merupakan sebuah sistem yang dirancang berbasis komputer dengan menggunakan pengetahuan, fakta dan cara berfikir seorang pakar dalam menyelesaikan suatu masalah yang biasanya hanya dapat diselesaikan oleh pakar.</p>
+              <h4 class="title"><a href="">Sistem Pakar dan <i>Teorema Bayes</i></a></h4>
+              <p class="description">Sistem Pakar merupakan sebuah sistem yang dirancang berbasis komputer dengan menggunakan pengetahuan, fakta dan cara berfikir seorang pakar dalam menyelesaikan suatu masalah yang biasanya hanya dapat diselesaikan oleh pakar.
 
               <br>
+              <br>
 
-              <p class="description">Tanaman Pisang merupakan tanaman asli asia tenggara termasuk indonesia. tanaman pisang tanaman yang dapat ditanaman diperkarangan rumah maupun di perkebunan. Terdapat beberapa penyakit yang dapat menyerang tanaman pisang diantaranya:<a class="description" href="<?php echo base_url('home/macam') ?>"> Penyakit Tanaman Pisang</a>
+            
+                Teorema Bayes adalah salah satu metode sistem pakar yang digunakan untuk menghitung nilai probabilitas suatu kejadian yang terjadi berdasarkan faktor yang diperoleh dari hasil pengamatan.
               </p>
+
+              <!-- <p class="description">Tanaman Pisang merupakan tanaman asli asia tenggara termasuk indonesia. tanaman pisang tanaman yang dapat ditanaman diperkarangan rumah maupun di perkebunan. Terdapat beberapa penyakit yang dapat menyerang tanaman pisang diantaranya:<a class="description" href="<?php echo base_url('home/macam') ?>"> Penyakit Tanaman Pisang</a>
+              </p> -->
             </div>
           </div>
 
@@ -46,10 +54,10 @@
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4 class="title"><a href="">Tanaman Pisang</a></h4>
-              <p class="description">Tanaman Pisang merupakan tanaman asli asia tenggara termasuk indonesia. tanaman pisang tanaman yang dapat ditanaman diperkarangan rumah maupun di perkebunan. Terdapat beberapa penyakit yang dapat menyerang tanaman pisang diantaranya:</p><br>
-              <div class="center">
+              <p class="description">Tanaman Pisang merupakan tanaman asli asia tenggara termasuk indonesia. tanaman pisang tanaman yang dapat ditanaman diperkarangan rumah maupun di perkebunan. Terdapat beberapa penyakit yang dapat menyerang tanaman pisang diantaranya: <a class="description" href="<?php echo base_url('home/macam') ?>"> Penyakit Tanaman Pisang</a></p><br>
+              <!-- <div class="center">
                <a href="<?php echo base_url('home/macam') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-search fa-sm text-black-50"></i> Penyakit Tanaman Pisang</a>
-             </div>
+             </div> -->
             </div>
           </div>
 

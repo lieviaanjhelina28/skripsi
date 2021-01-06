@@ -24,8 +24,8 @@
                     </div>
 
                      <div class="form-group">
-                     <label><b>Probabilitas</b></label>
-                     <input type="text" name="probabilitas" class="form-control" value="<?php echo $a->probabilitas ?>"><?php echo form_error('probabilitas', ' <small class="text-danger pl-3">', '</small> '); ?>
+                     <label><b>bobot</b></label>
+                     <input type="text" name="bobot" class="form-control" value="<?php echo $a->bobot ?>"><?php echo form_error('bobot', ' <small class="text-danger pl-3">', '</small> '); ?>
                     </div>
 
                      <div class="modal-footer">

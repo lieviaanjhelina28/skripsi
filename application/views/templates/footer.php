@@ -4,8 +4,8 @@
    
 
     <div class="container py-4">
-      <div class="copyright">
-        &copy; Copyright <strong><span>BizLand</span></strong>. All Rights Reserved  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      <div class="copyright center">
+        Copyright  &copy; Website 2020 <!-- <strong><span>BizLand</span></strong>. All Rights Reserved  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
       </div>
      <!--  <div class="credits"> -->
         <!-- All the links in the footer should remain intact. -->
