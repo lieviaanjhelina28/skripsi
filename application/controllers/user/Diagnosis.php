@@ -45,7 +45,7 @@ class Diagnosis extends CI_Controller
             $sakit[$p['kode_penyakit']][] = array(
               'kode_gejala' => $g['kode_gejala'],
               'nama_gejala' => $g['nama_gejala'],
-              'bobot' => $g['bobot']
+              'bobot' => $g['bobot'],
             );
           }
         }
@@ -95,7 +95,8 @@ class Diagnosis extends CI_Controller
         $hasil_akhir[] = array (
           'nama_penyakit' => $pen['nama_penyakit'],
           'kode_penyakit' => $pen['kode_penyakit'],
-          'presentase'    => $jumlah3 * 100
+          'presentase'    => $jumlah3 * 100,
+          'solusi'        => $pen['solusi'],
         );
         $hasilJumlah[] = $jumlah3 * 100;
       }
@@ -115,7 +116,7 @@ class Diagnosis extends CI_Controller
     // print_r($jumlah2);
     // print_r($hasil2);
     // print_r($hasilJumlah);
-    print_r($hasil_akhir);
+    // print_r($hasil_akhir);
 
     $maxJumlah = max($hasilJumlah);
     $newHasilAkhir = array_filter($hasil_akhir, function($hasil) use ($maxJumlah) {
@@ -130,7 +131,8 @@ class Diagnosis extends CI_Controller
         $tampil_hasil = array (
           'nama_penyakit' => $has['nama_penyakit'],
           'kode_penyakit' => $has['kode_penyakit'],
-          'presentase'    => $has['presentase']
+          'presentase'    => $has['presentase'],
+          'solusi'        => $has['solusi']
         );
       }
     }else if(count($newHasilAkhir) > 1){
@@ -155,7 +157,8 @@ class Diagnosis extends CI_Controller
         $tampil_hasil = array (
           'nama_penyakit' => $has['nama_penyakit'],
           'kode_penyakit' => $has['kode_penyakit'],
-          'presentase'    => $has['presentase']
+          'presentase'    => $has['presentase'],
+          'solusi'        => $has['solusi']
         );
       }
     }
@@ -167,6 +170,9 @@ class Diagnosis extends CI_Controller
 
     $no = 1;
     echo "Penyakit Terdeteksi <strong>".$tampil_hasil['nama_penyakit']."</strong> dengan nilai ".number_format($tampil_hasil['presentase'],6)."%<br><br>";
+     echo "Solusi yang diberikan :<br>".$tampil_hasil['solusi']."<br>";
+
+
     echo "Gejala yang dipilih :<br>";
     foreach ($sakit as $id => $value) {
       foreach ($sakit[$id] as $gej) {
