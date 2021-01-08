@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2020 at 08:27 PM
+-- Generation Time: Jan 08, 2021 at 08:05 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -32,14 +32,14 @@ CREATE TABLE `aturan` (
   `id_aturan` int(1) NOT NULL,
   `kode_penyakit` varchar(3) NOT NULL,
   `kode_gejala` varchar(3) NOT NULL,
-  `probabilitas` double NOT NULL
+  `bobot` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `aturan`
 --
 
-INSERT INTO `aturan` (`id_aturan`, `kode_penyakit`, `kode_gejala`, `probabilitas`) VALUES
+INSERT INTO `aturan` (`id_aturan`, `kode_penyakit`, `kode_gejala`, `bobot`) VALUES
 (1, 'P01', 'G01', 0.9),
 (2, 'P01', 'G02', 0.85),
 (3, 'P01', 'G03', 0.6),
@@ -123,25 +123,42 @@ INSERT INTO `gejala` (`kode_gejala`, `nama_gejala`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hasil`
+--
+
+CREATE TABLE `hasil` (
+  `id_hasil` int(11) NOT NULL,
+  `kode_gejala` varchar(5) NOT NULL,
+  `jumlah` double NOT NULL,
+  `hasil1` double NOT NULL,
+  `jumlah2` double NOT NULL,
+  `hasil2` double NOT NULL,
+  `hasil` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `penyakit`
 --
 
 CREATE TABLE `penyakit` (
   `kode_penyakit` varchar(3) NOT NULL,
-  `nama_penyakit` varchar(100) NOT NULL
+  `nama_penyakit` varchar(100) NOT NULL,
+  `solusi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `penyakit`
 --
 
-INSERT INTO `penyakit` (`kode_penyakit`, `nama_penyakit`) VALUES
-('P01', 'Bercak Daun Sigatoka (Penyebab : Cendawan Mycosphaerella sp)'),
-('P02', 'Bercak Daun Cordana (Penyebab : Cendawan Cordana musae)'),
-('P03', 'Bercak bersilang (Penyebab : Cendawan Phyllachora musicola)'),
-('P04', 'Layu Fusarium (Penyebab : Cendawan Fusarium oxysporum f.sp cubense)'),
-('P05', 'Penyakit Darah (Penyebab : Bakteri Ralstonia sp)'),
-('P06', 'Penyakit Kerdil Pisang (Penyebab : Bunchy top virus)');
+INSERT INTO `penyakit` (`kode_penyakit`, `nama_penyakit`, `solusi`) VALUES
+('P01', 'Bercak Daun Sigatoka (Penyebab : Cendawan Mycosphaerella sp)', '1. Hindari kelembapan tanah yang tinggi dengan drainase(saluran air) yang baik<br>\r\n2. Berikan jarak yang cukup antar tanaman untuk memastikan peredaran udara yang baik <br>\r\n3. Bersihkan lahan dan sekitarnya dari gulma<br>\r\n4. Potong daun yang terinfeksi, kemudian bakar atau kubur di luar perkebunan<br>\r\n\r\n'),
+('P02', 'Bercak Daun Cordana (Penyebab : Cendawan Cordana musae)', '1. Gunakan varietas tangguh jika tersedia di daerah anda (bebrapa ada di pasaran)<br>\r\n2. Atur jarak tanam yang tepat untuk menghindari naungan dan kontak daun<br>\r\n3. pastikan bahwa perkebunan baru berada pada jarak yang cukup dari perkebunan yang sakit<br>\r\n4. hidari irigasi pancuran untuk mrminimalkan kelembapan relatif dan gunakan irigasi tetes<br>\r\n'),
+('P03', 'Bercak bersilang (Penyebab : Cendawan Phyllachora musicola)', 'ccccccccccc'),
+('P04', 'Layu Fusarium (Penyebab : Cendawan Fusarium oxysporum f.sp cubense)', '1. Buang dan bakar tanaman pisang yang sudah terlanjur terserang penyaki ini<br>\r\n2. Menanam lebih dari satu varietas atau menanan bibit yang sehat, Jangan memasukkan bibit <br>\r\n3. bonggol dan tanah dari daerah yang sudah terkontaminasi'),
+('P05', 'Penyakit Darah (Penyebab : Bakteri Ralstonia sp)', '1. Selalu gunakan bibit tanaman pisang yang bebas penyakit tanaman (semua pisang rentan) dengan tujuan menjaga keluar masuknya penyakit ke daerah baru<br> \r\n2. Cegah serangga penular atau pembawa penyakit dengan cara bungkus segera jantung pisang segera setelah keluar dengan kantong plastik, kertas ataupun bahan lain dengan tujuan untuk mengurangi penularan penyakit dalam dan di antara lokasi yang ditularkan oleh serangga pengunjung bunga. Jangan tunggu sampai mekar baru dibungkus<br>\r\n3. Potong sesegera mungkin jantung pisang begitu sisir buah terakhir sudah selesai keluar<br>\r\nEradikasi tanaman dengan cara segera hancurkan dan musnahkan tanaman sakit dan tanaman pisang yang ada disekilingnya, selanjutnya selalu amati dan perhatikan jikalau sisa-sisa tanaman sakit yang telah dihancurkan tersebut tumbuh kembal'),
+('P06', 'Penyakit Kerdil Pisang (Penyebab : Bunchy top virus)', '1. Gunakan bahan tanaman sehat dari sumber bersertifikat\r\n2. Pantau tanaman secara teratur dan periksa tanaman yang sakit\r\n3. Buang, keringkan dan kubur tanaman pisang yang terinfeksi\r\n4. Buat zona penyangga bebas pisang di -antara kebun-kebun yang berbeda');
 
 -- --------------------------------------------------------
 
@@ -153,16 +170,15 @@ CREATE TABLE `user` (
   `id_user` int(1) NOT NULL,
   `username` varchar(10) NOT NULL,
   `password` varchar(120) NOT NULL,
-  `role_id` int(1) NOT NULL,
-  `aktif` int(1) NOT NULL
+  `role_id` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `password`, `role_id`, `aktif`) VALUES
-(10, 'admin', '$2y$10$zcrce8oRHroLVRgVUjyBmO/60U7LIoeYu0VlrAfm7TtBvFx5M7VEO', 1, 1);
+INSERT INTO `user` (`id_user`, `username`, `password`, `role_id`) VALUES
+(1, 'admin', '$2y$10$erLTdRPQQV1cMWQ6o0dQDOA2vJArtd4TVqwRoFy8xKBhRZgBSThrm', 1);
 
 --
 -- Indexes for dumped tables
@@ -181,6 +197,12 @@ ALTER TABLE `aturan`
 --
 ALTER TABLE `gejala`
   ADD PRIMARY KEY (`kode_gejala`);
+
+--
+-- Indexes for table `hasil`
+--
+ALTER TABLE `hasil`
+  ADD PRIMARY KEY (`id_hasil`);
 
 --
 -- Indexes for table `penyakit`
@@ -202,13 +224,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `aturan`
 --
 ALTER TABLE `aturan`
-  MODIFY `id_aturan` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_aturan` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+
+--
+-- AUTO_INCREMENT for table `hasil`
+--
+ALTER TABLE `hasil`
+  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_user` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

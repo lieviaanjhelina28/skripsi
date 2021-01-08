@@ -22,6 +22,11 @@
                      <input type="text" name="nama_penyakit" class="form-control" value="<?php echo $p->nama_penyakit ?>"><?php echo form_error('nama_penyakit', ' <small class="text-danger pl-3">', '</small> '); ?>
                     </div>
 
+                    <div class="form-group">
+                     <label><b>Solusi</b></label>
+                     <input type="text" name="solusi" class="form-control" value="<?php echo $p->solusi ?>"><?php echo form_error('solusi', ' <small class="text-danger pl-3">', '</small> '); ?>
+                    </div>
+
                      <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Ubah</button>
                     <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>

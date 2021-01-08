@@ -23,9 +23,13 @@ public function __construct()
 
                         'required' => 'Kode Penyakit Harus Diisi!'
                 ]);
-        $this->form_validation->set_rules('nama_penyakit', 'Kama_penyakit', 'required|trim', [
+        $this->form_validation->set_rules('nama_penyakit', 'Nama_penyakit', 'required|trim', [
 
                         'required' => 'Nama Penyakit Harus Diisi!'
+                ]);
+        $this->form_validation->set_rules('solusi', 'solusi', 'required|trim', [
+
+                        'required' => 'Solusi Harus Diisi!'
                 ]);
         if ($this->form_validation->run() == false) {
 		$this->load->view('templates/admin_header',$data);
@@ -35,7 +39,8 @@ public function __construct()
          
          $data = [
          	   'kode_penyakit' => $this->input->post('kode_penyakit'),
-               'nama_penyakit' => $this->input->post('nama_penyakit')
+               'nama_penyakit' => $this->input->post('nama_penyakit'),
+               'solusi' => $this->input->post('solusi')
           ];
 
          $this->m_penyakit->input_data($data, 'penyakit');
@@ -59,11 +64,15 @@ public function __construct()
 	{
 		$kode_penyakit = $this->input->post('kode_penyakit');
 		$nama_penyakit = $this->input->post('nama_penyakit');
+		$solusi = $this->input->post('solusi');
+
 
 		$data = [
 
 			'kode_penyakit' => $kode_penyakit,
-			'nama_penyakit' => $nama_penyakit
+			'nama_penyakit' => $nama_penyakit,
+			'solusi' => $solusi
+
 		];
 
 		$where = array(

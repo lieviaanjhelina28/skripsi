@@ -23,6 +23,7 @@
                       <th>No</th>
                       <th>Kode Penyakit</th>
                       <th>Nama Penyakit</th>
+                      <th>Solusi</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -43,6 +44,8 @@
                       <td><?php echo $no++ ?></td>
                        <td><?php echo $p->kode_penyakit ?></td>
                       <td><?php echo $p->nama_penyakit ?></td>
+                      <td><?php echo $p->solusi ?></td>
+
                       <td>
                         <?php echo anchor('admin/penyakit/ubah/' . $p->kode_penyakit, '<div class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></div>');  ?> 
 
@@ -83,6 +86,10 @@
                     <div class="form-group">
                     <textarea type="text" class="form-control" id="nama_penyakit" name="nama_penyakit" placeholder="Nama Penyakit"></textarea>
                     <?php echo form_error('nama_penyakit', ' <small class="text-danger pl-3">', '</small> '); ?>
+                </div>
+                <div class="form-group">
+                    <textarea type="text" class="form-control" id="solusi" name="solusi" placeholder="Solusi"></textarea>
+                    <?php echo form_error('solusi', ' <small class="text-danger pl-3">', '</small> '); ?>
                 </div>
               </div>
                 <div class="modal-footer">
