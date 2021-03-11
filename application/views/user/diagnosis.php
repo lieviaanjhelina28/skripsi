@@ -43,7 +43,7 @@
 </tbody>
 </table>
     <div class="panel-footer">
-        <button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-ok"></span>Diagnosa</button>
+        <button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-ok"></span>Diagnosis</button>
 
           </div>
         </div>

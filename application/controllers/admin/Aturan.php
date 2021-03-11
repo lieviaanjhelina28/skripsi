@@ -15,11 +15,11 @@ class Aturan extends CI_Controller
     public function index()
     {
         $data['title'] = 'Data Aturan';
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
 
         $data['aturan'] = $this->m_aturan->tampildata();
         $data['penyakit'] = $this->db->get('penyakit')->result();
-         $data['gejala'] = $this->db->get('gejala')->result();
+        $data['gejala'] = $this->db->get('gejala')->result();
 
           $this->form_validation->set_rules('kode_penyakit','Kode_penyakit','required|trim', [
 
@@ -61,7 +61,7 @@ class Aturan extends CI_Controller
 
  public function ubah($id_aturan)
     {
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
         $data['title'] = 'Halaman Ubah Data Penyakit';
         $where = array('id_aturan' => $id_aturan);
         $data['aturan'] = $this->m_aturan->edit_data($where,'aturan')->result();

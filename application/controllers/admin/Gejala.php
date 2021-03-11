@@ -17,7 +17,7 @@ public function __construct()
 	{
 
 		$data['title'] = 'Data gejala';
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
 
         $data['gejala'] = $this->m_gejala->tampildata();
 
@@ -49,7 +49,7 @@ public function __construct()
 
     public function ubah($kode_gejala)
     {
-           $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['admin'] = $this->db->get_where('admin', ['username' => $this->session->userdata('username')])->row_array();
         $data['title'] = 'Halaman Ubah Data gejala';
         $where = array('kode_gejala' => $kode_gejala);
         $data['gejala'] = $this->m_gejala->edit_data($where,'gejala')->result();

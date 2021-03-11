@@ -38,7 +38,7 @@ class Auth extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $user = $this->db->get_where('user', ['username' => $username])->row_array();
+        $user = $this->db->get_where('admin', ['username' => $username])->row_array();
 
         // jika usernya ada
         if ($user) {
@@ -46,14 +46,14 @@ class Auth extends CI_Controller
                 if (password_verify($password, $user['password'])) {
                     $data = [
                         'username' => $user['username'],
-                        'role_id' => $user['role_id']
+                        // 'role_id' => $user['role_id']
                     ];
                     $this->session->set_userdata($data);
-                    if ($user['role_id'] == 1) {
+                    // if ($user['role_id'] == 1) {
                         redirect('admin/penyakit');
-                    } else {
-                        redirect('home');
-                    }
+                    // } else {
+                    //     redirect('home');
+                    // }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah!</div>');
                     redirect('auth');
@@ -94,14 +94,13 @@ class Auth extends CI_Controller
         $this->load->view('templates/auth_footer');
 
         } else {
-            $username = $this->input->post('username',true);
             $data = [
             'username' => htmlspecialchars($this->input->post('username',true)),
             'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-            'role_id' => 1,
+            // 'role_id' => 1,
             ];
 
-            $this->db->insert('user', $data);
+            $this->db->insert('admin', $data);
             $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">Selamat akun anda telah terdaftar</div>');
             redirect('auth');
         }

@@ -67,7 +67,7 @@ class Diagnosis extends CI_Controller
       $jumlah = 0;
       $jumlah2 = 0;
       $jumlah3 = 0;
-      $bobot = [];
+      $itu = [];
       $hasil1 = [];
       $hasil2 = [];
       if (isset($sakit[$pen['kode_penyakit']])) {
@@ -75,12 +75,10 @@ class Diagnosis extends CI_Controller
         foreach ($sakit[$pen['kode_penyakit']] as $itung) {
           // echo $itung['bobot'];
           $jumlah = $jumlah + $itung['bobot'];
-          $bobot[] = $itung['bobot'];
+          $itu[] = $itung['bobot'];
         }
-        // print_r($jumlah);
-        // print_r($bobot);
-
-        foreach ($bobot as $i => $value) {
+        // print_r($itu);
+        foreach ($itu as $i => $value) {
           $hasil1[] = $value/$jumlah;
           $a = $value/$jumlah;
           $jumlah2 = $jumlah2 + ($a * $value);
@@ -88,14 +86,11 @@ class Diagnosis extends CI_Controller
         }
         // print_r($hasil1);
         // print_r($jumlah2);
-
-        foreach ($bobot as $l => $alue) {
+        foreach ($itu as $l => $alue) {
           $hasil2[] = ($hasil1[$l] * $alue) / $jumlah2;
           $a = ($hasil1[$l] * $alue) / $jumlah2;
           $jumlah3 = $jumlah3 + ($alue * $a);
         }
-        // print_r($hasil2);
-        // print_r($jumlah3);
         // $hasil_akhir[$pen['kode_penyakit']] = $jumlah3 * 100;
         $hasil_akhir[] = array (
           'nama_penyakit' => $pen['nama_penyakit'],
@@ -106,10 +101,22 @@ class Diagnosis extends CI_Controller
         $hasilJumlah[] = $jumlah3 * 100;
       }
     }
+    // jumlah evidence print_r($jumlah);
+
+     // perhitungan 2 p(hi) print_r($hasil1);
+
+     // hasil 3 print_r($jumlah2);
+
+    // perhitungan 4 p(hi|e) print_r($hasil2);
+
    
-    //  print_r($hasil_akhir);
+    // hasil akhir print_r($jumlah3);
+    // print_r($jumlah);
+    // print_r($hasil1);
+    // print_r($jumlah2);
+    // print_r($hasil2);
     // print_r($hasilJumlah);
-  
+    // print_r($hasil_akhir);
 
     $maxJumlah = max($hasilJumlah);
     $newHasilAkhir = array_filter($hasil_akhir, function($hasil) use ($maxJumlah) {
@@ -160,8 +167,6 @@ class Diagnosis extends CI_Controller
     // print_r($newHasilAkhir);
     // print_r($sakit);
     echo "</pre>";
-
-     echo "<H1>Hasil Diagnosis</H1><br>";
 
     $no = 1;
     echo "Penyakit Terdeteksi <strong>".$tampil_hasil['nama_penyakit']."</strong> dengan nilai ".number_format($tampil_hasil['presentase'],6)."%<br><br>";
