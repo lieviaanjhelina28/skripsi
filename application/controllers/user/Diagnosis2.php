@@ -55,12 +55,12 @@ class Diagnosis extends CI_Controller
     // print_r($sakit);
     // print_r($gejala);
     // print_r($penyakit);
-
-    // $jumlah  = $this->input->post('jumlahbobot');
-    // $hasil1  = $this->input->post('phi');
-    // $jumlah2 = $this->input->post('evidence');
-    // $hasil2  = $this->input->post('phie');
-    // $hasilJumlah = $this->input->post('hasil');
+    $gejala   = $this->input->post('kode_gejala');
+    $it  = $this->input->post('bobot');
+    $hasil1  = $this->input->post('phi');
+    $jumlah2 = $this->input->post('evidence');
+    $hasil2  = $this->input->post('phie');
+    $hasilJumlah = $this->input->post('hasil');
 
     // ini perhitungan
     foreach ($penyakit as $pen) {

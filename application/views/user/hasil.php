@@ -13,11 +13,20 @@
                 </div>
                 </div>
                 <div class="card-body">
-                 <!--  <div class="text-center"> -->
+                <?php
+    $no = 1;
+    echo "<b>Gejala yang dipilih :</b><br>";
+    foreach ($sakit as $id => $value) {
+      foreach ($sakit[$id] as $gej) {
+        echo $no++.". ".$gej['nama_gejala']."<br>";
+      }
+    } 
+    echo "<br>";
 
+    echo "Penyakit Terdeteksi <strong>".$tampil_hasil['nama_penyakit']."</strong> dengan nilai ".number_format($tampil_hasil['persentase'],2)."%<br><br>";
 
-                 
-                    
+     echo "<b>Solusi yang diberikan :</b><br>".$tampil_hasil['solusi']."<br>";
+     ?>
     </div>
   </div>
 </div>

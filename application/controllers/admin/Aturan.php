@@ -21,12 +21,12 @@ class Aturan extends CI_Controller
         $data['penyakit'] = $this->db->get('penyakit')->result();
         $data['gejala'] = $this->db->get('gejala')->result();
 
-          $this->form_validation->set_rules('kode_penyakit','Kode_penyakit','required|trim', [
+          $this->form_validation->set_rules('penyakit_kode','penyakit_kode','required|trim', [
 
                 'required' => 'Kode Penyakit Harus Diisi!'
         ]);
 
-        $this->form_validation->set_rules('kode_gejala','Kode_gejala','required|trim', [
+        $this->form_validation->set_rules('gejala_kode','gejala_kode','required|trim', [
 
                 'required' => 'Kode Gejala Harus Diisi!'
         ]);
@@ -44,8 +44,8 @@ class Aturan extends CI_Controller
         } else{     
          
          $data = [
-            'kode_penyakit' => $this->input->post('kode_penyakit'),
-            'kode_gejala'   => $this->input->post('kode_gejala'),
+            'penyakit_kode' => $this->input->post('penyakit_kode'),
+            'gejala_kode'   => $this->input->post('gejala_kode'),
             'bobot'  => $this->input->post('bobot')
             
 
@@ -73,14 +73,14 @@ class Aturan extends CI_Controller
     public function update()
     {
         $id_aturan = $this->input->post('id_aturan');
-        $kode_penyakit = $this->input->post('kode_penyakit');
-        $kode_gejala = $this->input->post('kode_gejala');
+        $penyakit_kode = $this->input->post('penyakit_kode');
+        $gejala_kode = $this->input->post('gejala_kode');
         $bobot = $this->input->post('bobot');
 
         $data = [
             // 'id_aturan' => $id_aturan,
-            'kode_penyakit' => $kode_penyakit,
-            'kode_gejala' => $kode_gejala,
+            'penyakit_kode' => $penyakit_kode,
+            'gejala_kode' => $gejala_kode,
             'bobot' => $bobot
         ];
 
@@ -88,7 +88,7 @@ class Aturan extends CI_Controller
             'id_aturan' => $id_aturan
         );
 
-        $this->m_penyakit->update($where,$data, 'aturan');
+        $this->m_aturan->update($where,$data, 'aturan');
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible text-center" role="alert">Data aturan Berhasil Diubah</div>');
             redirect('admin/aturan');
         redirect('admin/aturan');

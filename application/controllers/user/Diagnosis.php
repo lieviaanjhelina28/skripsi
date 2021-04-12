@@ -41,7 +41,7 @@ class Diagnosis extends CI_Controller
       foreach ($penyakit as $p) {
         // $sakit[$p['kode_penyakit']] = array();
         foreach ($gejala[$key] as $g) {
-          if ($g['kode_penyakit'] == $p['kode_penyakit']) {
+          if ($g['penyakit_kode'] == $p['kode_penyakit']) {
             $sakit[$p['kode_penyakit']][] = array(
               'kode_gejala' => $g['kode_gejala'],
               'nama_gejala' => $g['nama_gejala'],
@@ -56,64 +56,64 @@ class Diagnosis extends CI_Controller
     // print_r($gejala);
     // print_r($penyakit);
 
-    // $jumlah  = $this->input->post('jumlahbobot');
-    // $hasil1  = $this->input->post('phi');
-    // $jumlah2 = $this->input->post('evidence');
-    // $hasil2  = $this->input->post('phie');
-    // $hasilJumlah = $this->input->post('hasil');
+    
 
     // ini perhitungan
     foreach ($penyakit as $pen) {
-      $jumlah = 0;
-      $jumlah2 = 0;
-      $jumlah3 = 0;
+      $perjumlahan = 0;
+      $evidence = 0;
+      $total = 0;
       $bobot = [];
-      $hasil1 = [];
-      $hasil2 = [];
+      $phi = [];
+      $phie = [];
       if (isset($sakit[$pen['kode_penyakit']])) {
         // echo $pen['kode_penyakit'];
         foreach ($sakit[$pen['kode_penyakit']] as $itung) {
           // echo $itung['bobot'];
-          $jumlah = $jumlah + $itung['bobot'];
+          $perjumlahan = $perjumlahan + $itung['bobot'];
           $bobot[] = $itung['bobot'];
         }
-        // print_r($jumlah);
         // print_r($bobot);
+        // print_r($perjumlahan);
+       
 
         foreach ($bobot as $i => $value) {
-          $hasil1[] = $value/$jumlah;
-          $a = $value/$jumlah;
-          $jumlah2 = $jumlah2 + ($a * $value);
-          // echo $jumlah2."<br>";
+          $phi[] = $value/$perjumlahan;
+          $a = $value/$perjumlahan;
+          $evidence = $evidence + ($a * $value);
+          // echo $evidence."<br>";
         }
-        // print_r($hasil1);
-        // print_r($jumlah2);
+        // print_r($phi);
+        // print_r($evidence);
 
         foreach ($bobot as $l => $alue) {
-          $hasil2[] = ($hasil1[$l] * $alue) / $jumlah2;
-          $a = ($hasil1[$l] * $alue) / $jumlah2;
-          $jumlah3 = $jumlah3 + ($alue * $a);
+          $phie[] = ($phi[$l] * $alue) / $evidence;
+          $a = ($phi[$l] * $alue) / $evidence;
+          $total = $total + ($alue * $a);
         }
-        // print_r($hasil2);
-        // print_r($jumlah3);
-        // $hasil_akhir[$pen['kode_penyakit']] = $jumlah3 * 100;
+        // print_r($phie);
+        // print_r($total);
+        // $hasil_akhir[$pen['kode_penyakit']] = $total * 100;
         $hasil_akhir[] = array (
           'nama_penyakit' => $pen['nama_penyakit'],
           'kode_penyakit' => $pen['kode_penyakit'],
-          'presentase'    => $jumlah3 * 100,
+          'persentase'    => $total * 100,
           'solusi'        => $pen['solusi'],
         );
-        $hasilJumlah[] = $jumlah3 * 100;
+        $hasilJumlah[] = $total * 100;
       }
     }
+
+    
+
    
-    //  print_r($hasil_akhir);
+     // print_r($hasil_akhir);
     // print_r($hasilJumlah);
   
 
     $maxJumlah = max($hasilJumlah);
     $newHasilAkhir = array_filter($hasil_akhir, function($hasil) use ($maxJumlah) {
-      if ($hasil['presentase'] == $maxJumlah) {
+      if ($hasil['persentase'] == $maxJumlah) {
         return true;
       }
       return false;
@@ -124,7 +124,7 @@ class Diagnosis extends CI_Controller
         $tampil_hasil = array (
           'nama_penyakit' => $has['nama_penyakit'],
           'kode_penyakit' => $has['kode_penyakit'],
-          'presentase'    => $has['presentase'],
+          'persentase'    => $has['persentase'],
           'solusi'        => $has['solusi']
         );
       }
@@ -150,31 +150,66 @@ class Diagnosis extends CI_Controller
         $tampil_hasil = array (
           'nama_penyakit' => $has['nama_penyakit'],
           'kode_penyakit' => $has['kode_penyakit'],
-          'presentase'    => $has['presentase'],
+          'persentase'    => $has['persentase'],
           'solusi'        => $has['solusi']
         );
+
+
+      // $hasil = array(
+      // 'kode_penyakit' => $this->input->post('penyakit_kode'),
+      // 'nama_penyakit' => $this->input->post('nama_penyakit'),
+      // 'persentase' => $this->input->post('persentase'),
+      // 'solusi' => $this->session->userdata('solusi'),
+      // );
+
+      // $this->db->input_data($hasil, 'hasil');
+
+      // redirect('user/hasil');
+         
       }
+
+
+
+   
     }
 
-    // print_r($hasilAkhir);
+    // print_r($tampil_hasil);
     // print_r($newHasilAkhir);
     // print_r($sakit);
+
     echo "</pre>";
 
-     echo "<H1>Hasil Diagnosis</H1><br>";
-
-    $no = 1;
-    echo "Penyakit Terdeteksi <strong>".$tampil_hasil['nama_penyakit']."</strong> dengan nilai ".number_format($tampil_hasil['presentase'],6)."%<br><br>";
-     echo "Solusi yang diberikan :<br>".$tampil_hasil['solusi']."<br>";
 
 
-    echo "Gejala yang dipilih :<br>";
-    foreach ($sakit as $id => $value) {
-      foreach ($sakit[$id] as $gej) {
-        echo $no++.". ".$gej['nama_gejala']."<br>";
+
+
+// baru
+
+   $data = array(
+        'penyakit_kode' => $tampil_hasil['kode_penyakit'],
+        'persentase' => $tampil_hasil['persentase'],
+      );
+
+      $this->db->insert('hasil', $data);
+   
+
+    $hasil = array(
+      'sakit' => $sakit,
+      'tampil_hasil' => $tampil_hasil,
+    );
+
+    $data2['title'] = 'Sistem Pakar Penyakit Tanaman Pisang';
+    $this->load->view('templates/header', $data2);
+    $this->load->view('user/hasil',$hasil);
+    $this->load->view('templates/footer');
+      
+
+
       }
     }
 
-    
-  }
-}
+
+
+   
+
+  

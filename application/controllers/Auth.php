@@ -38,15 +38,15 @@ class Auth extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $user = $this->db->get_where('admin', ['username' => $username])->row_array();
+        $admin = $this->db->get_where('admin', ['username' => $username])->row_array();
 
-        // jika usernya ada
-        if ($user) {
+        // jika adminnya ada
+        if ($admin) {
                 // cek password
-                if (password_verify($password, $user['password'])) {
+                if (password_verify($password, $admin['password'])) {
                     $data = [
-                        'username' => $user['username'],
-                        // 'role_id' => $user['role_id']
+                        'username' => $admin['username'],
+                        // 'password' => $admin['password']
                     ];
                     $this->session->set_userdata($data);
                     // if ($user['role_id'] == 1) {
@@ -55,15 +55,13 @@ class Auth extends CI_Controller
                     //     redirect('home');
                     // }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Password Salah!</div>');
                     redirect('auth');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username Salah!</div>');
                 redirect('auth');
             }
-       
-    
   }
 
 
@@ -107,15 +105,12 @@ class Auth extends CI_Controller
 
     }
 
-        
-
+    
 
     
     public function logout()
     {
         $this->session->unset_userdata('username');
-        $this->session->unset_userdata('role_id');
-
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">Anda telah keluar!</div>');
             redirect('auth');
     }

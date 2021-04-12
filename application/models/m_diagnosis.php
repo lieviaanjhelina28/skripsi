@@ -18,7 +18,7 @@ class M_diagnosis extends CI_model{
     {
     	$this->db->select('*');
     	$this->db->from('aturan');
-    	$this->db->join('gejala','gejala.kode_gejala=aturan.kode_gejala');
+    	$this->db->join('gejala','gejala.kode_gejala=aturan.gejala_kode');
     	$this->db->order_by('id_aturan','DESC');
     	$query = $this->db->get();
     	return $query;
@@ -33,14 +33,14 @@ class M_diagnosis extends CI_model{
     {
          $this->db->select('aturan.*,gejala.*');
         $this->db->from('aturan');
-    	$this->db->join('gejala','gejala.kode_gejala=aturan.kode_gejala');
-         $this->db->where('aturan.kode_gejala',$dgejala);
+    	$this->db->join('gejala','gejala.kode_gejala=aturan.gejala_kode');
+         $this->db->where('aturan.gejala_kode',$dgejala);
         $query = $this->db->get();
         return $query;
 
 
     }
-    public function input_data($table, $data)
+    public function input_data($data, $table)
     {
         $this->db->insert($table, $data);
     }
